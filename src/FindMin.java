@@ -14,9 +14,6 @@ public class FindMin {
 				 if(min>arr[j]) min=arr[j];
 			}
 		}
-		
-//		if(min==0) System.out.println("Could not find minimum");
-		
 		System.out.println(min);
 	}
 

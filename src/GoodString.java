@@ -3,10 +3,8 @@ import java.util.Scanner;
 
 public class GoodString {
 	public static void main(String[] args) {
-		System.out.print("Enter input string : ");
-		Scanner sc = new Scanner(System.in);
-		String st = sc.nextLine();
-		sc.close();
+		
+		String st = getInputString();
 		
 		final ArrayList<String> vowels = new ArrayList<String>();
 		vowels.add("a");vowels.add("e");vowels.add("i");vowels.add("o");vowels.add("u");
@@ -28,5 +26,15 @@ public class GoodString {
 			}
 		}		
 		System.out.println(goodStringlen);
+	}
+	
+	private final static String getInputString() {
+		
+		System.out.print("Enter input string : ");
+		Scanner sc = new Scanner(System.in);
+		String input = sc.nextLine();
+		sc.close();
+		 
+		return input;
 	}
 }
