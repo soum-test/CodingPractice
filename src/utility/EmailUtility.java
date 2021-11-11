@@ -201,9 +201,45 @@ public class EmailUtility {
 		return this.htmlDoc;
 	}
 	
-	public Document getHTMLDocument(Item emailItem) {
+	/**
+	 * Method to get HTML DOcument object
+	 * @param emailItem
+	 * @return HTML Document object
+	 * @throws EmailException
+	 */
+	public Document getHTMLDocument(Item emailItem) throws EmailException{
 		return Jsoup.parse(this.getHTMLBody(emailItem));
 	}
+	
+	/**
+	 * Method to set default email folder
+	 * @param folder
+	 */
+	public void setFolder(Folder folder) {
+		this.folder = folder;
+	}
+	
+	/**
+	 * Method to set default email folder
+	 * @param folderName to search (Wellknown folder name enumeration value)
+	 * @throws EmailException
+	 */
+	public void setFolder(WellKnownFolderName sFolderName) throws EmailException {
+		try {
+			this.folder = Folder.bind(this.service, sFolderName);
+		}catch (Exception e) {
+			throw new EmailException("Invalid folder name\n" + e.getStackTrace());
+		}
+	}
+	
+	/**
+	 * Method to set default folder
+	 * @param sUserDefinedFolderName
+	 */
+	public void setFolder(String sUserDefinedFolderName) {
+		this.folder = this.getUserDefinedFolder(sUserDefinedFolderName);
+	}
+	
 	
 	/**
 	 * Method to get HTML body of the email
@@ -217,14 +253,6 @@ public class EmailUtility {
 		 }catch (Exception e) {
 			return "<html><body></body></html>";
 		}
-	}
-	
-	/**
-	 * Method to set default folder
-	 * @param sUserDefinedFolderName
-	 */
-	public void setFolder(String sUserDefinedFolderName) {
-		this.folder = this.getUserDefinedFolder(sUserDefinedFolderName);
 	}
 	
 	/**
