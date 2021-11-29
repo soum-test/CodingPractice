@@ -2,7 +2,7 @@
 public class FindMin {
 
 	public static void main(String[] args) {
-		int arr[]= {0,23,5,3,2,11,17,1};
+		int arr[]= {23,5,3,2,11,17,1};
 		
 		int min=0;
 		
